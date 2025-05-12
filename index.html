@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Habibi&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <title>Medium</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: rgb(247 244 237);
+            font-family: 'Inter', sans-serif;
+        }
+        a {
+            text-decoration: none;
+            color: black;
+        }
+        .main-nav {
+            padding: 5px 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        hr {
+            border: 1px solid rgb(126, 126, 126);
+            margin: 0;
+        }
+        .main-nav li {
+            list-style: none;
+            display: inline;
+            padding: 0 5px;
+        }
+        .main-nav a {
+            text-decoration: none;
+            color: black;
+        }
+        #main-logo {
+            font-weight: 900;
+            font-size: 2rem;
+            display: block;
+            font-family: "DM Serif Display", serif;
+        }
+        .primary-btn-small, 
+        .primary-btn-big {
+            background-color: rgb(20, 20, 20);
+            color: white;
+            padding: 14px;
+            border-radius: 40px;
+            border: none;
+            cursor: pointer;
+        }
+        .primary-btn-small:hover, 
+        .primary-btn-big:hover {
+            background-color: black;
+        }
+        .primary-btn-big {
+            font-size: 1.2rem;
+            padding: 20px;
+        }
+        main {
+            padding: 15px;
+            margin: 0 auto;
+            max-width: 1000px;
+            min-height: 600px;
+            height: calc(100vh - 190px);
+            overflow: hidden;
+        }
+        .main-header {
+            font-size: 6rem;
+            font-weight: 400;
+            margin: 0;
+            font-family: 'Habibi', sans-serif;
+        }
+        .short-desc {
+            font-size: 1.2rem;
+        }
+        .bi-primary-flex-container {
+            display: flex;
+            height: 600px;
+            width: 100%;
+            margin-top: 10vh;
+        }
+        .left-flex-content {
+            min-width: 600px;
+            width: 50%;
+            display: flex;
+            align-items: center;
+        }
+        .right-flex-content {
+            width: 50%;
+            text-align: right;
+        }
+        img {
+            height: 600px;
+        }
+        footer {
+            display: flex;
+            bottom: 0;
+            align-items: center;
+            justify-content: center;
+            height: 70px;
+            font-size: 0.8rem;
+        }
+        footer li {
+            list-style: none;
+            display: inline;
+            padding: 0 3px;
+        }
+        footer a {
+            color: gray;
+        }
+
+        @media screen and (max-width: 620px) {
+            .secondary-links a {
+                color: red;
+                display: none;
+            }
+            footer {
+                background-color: black;
+                justify-content: start;
+            }
+            footer a {
+                display: none;
+            }
+            .primary-f-links {
+                color: white;
+                display: inline;
+            }
+        }
+        @media screen and (max-width: 500px) {
+            .left-flex-content {
+                min-width: unset;
+                width: 100%;
+            }
+            .bi-primary-flex-container {
+                width: 100%;
+            }
+            .right-flex-content {
+                display: none;
+            }
+        }
+        @media screen and (max-width: 400px) {
+            #sign-in-link {
+                display: none;
+            }
+            .main-header {
+                font-size: 4rem;
+                font-weight: 400;
+                margin: 0;
+                font-family: 'Habibi', sans-serif;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="main-nav">
+        <span id="main-logo">Medium</span>
+        <ul>
+            <li class="secondary-links"><a href="#">Our story</a></li>
+            <li class="secondary-links"><a href="#">Membership</a></li>
+            <li class="secondary-links"><a href="#">Write</a></li>
+            <li><a id="sign-in-link" href="#">Sign in</a></li>
+            <li><a href="#"><button class="primary-btn-small">Get started</button></a></li>
+        </ul>
+    </nav>
+    <hr />
+    <main>
+        <div class="bi-primary-flex-container">
+            <div class="left-flex-content">
+                <div>
+                    <h1 class="main-header">Human stories & ideas</h1>
+                    <p class="short-desc">A place to read, write, and deepen your understanding</p>
+                    <button class="primary-btn-big">Start reading</button>
+                </div>
+            </div>
+            <div class="right-flex-content">
+                <img src="green_leave.webp" alt="Green Leave" />
+            </div>
+        </div>
+
+    </main>
+    
+    <hr />
+    <footer>
+        <ul>
+            <li><a class="primary-f-links" href="#">Help</a></li>
+            <li><a href="#">Status</a></li>
+            <li><a class="primary-f-links" href="#">About</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a class="primary-f-links" href="#">Privacy</a></li>
+            <li><a href="#">Rules</a></li>
+            <li><a class="primary-f-links" href="#">Terms</a></li>
+            <li><a href="#">Text to speech</a></li>
+        </ul>
+    </footer>
+
+</body>
+</html>
