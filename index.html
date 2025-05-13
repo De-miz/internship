@@ -22,7 +22,7 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            max-width: 1000px;
+            max-width: 1200px;
             margin: 0 auto;
         }
         hr {
@@ -32,7 +32,7 @@
         .main-nav li {
             list-style: none;
             display: inline;
-            padding: 0 5px;
+            padding: 0 6px;
         }
         .main-nav a {
             text-decoration: none;
@@ -59,12 +59,12 @@
         }
         .primary-btn-big {
             font-size: 1.2rem;
-            padding: 20px;
+            padding: 15px 30px;
         }
         main {
             padding: 15px;
             margin: 0 auto;
-            max-width: 1000px;
+            max-width: 1200px;
             min-height: 600px;
             height: calc(100vh - 190px);
             overflow: hidden;
@@ -93,6 +93,8 @@
         .right-flex-content {
             width: 50%;
             text-align: right;
+            position: absolute;
+            right: 0;
         }
         img {
             height: 600px;
@@ -114,6 +116,18 @@
             color: gray;
         }
 
+        @media screen and (max-width: 980px) {
+            .right-flex-content {
+                left: 700px;
+                right: unset;
+            }
+            main {
+                overflow: hidden;
+            }
+            body {
+                overflow-x: hidden;
+            }
+        }
         @media screen and (max-width: 620px) {
             .secondary-links a {
                 color: red;
@@ -129,6 +143,11 @@
             .primary-f-links {
                 color: white;
                 display: inline;
+            }
+            .primary-btn-big {
+                font-size: 1.2rem;
+                padding: 20px;
+                background-color: green;
             }
         }
         @media screen and (max-width: 500px) {
@@ -170,6 +189,7 @@
     <hr />
     <main>
         <div class="bi-primary-flex-container">
+
             <div class="left-flex-content">
                 <div>
                     <h1 class="main-header">Human stories & ideas</h1>
@@ -177,9 +197,11 @@
                     <button class="primary-btn-big">Start reading</button>
                 </div>
             </div>
+
             <div class="right-flex-content">
                 <img src="green_leave.webp" alt="Green Leave" />
             </div>
+            
         </div>
 
     </main>
