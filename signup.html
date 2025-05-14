@@ -101,9 +101,8 @@
                     i.style.borderColor = "var(--primary-field-border-c)";
                 }
             }
-
-            console.log(emailElem.value.search(/@+[a-z].com\b/), typeof emailElem.value.search(/@+[a-z].com\b/));
-            if (emailElem.value.search(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/) < 0) {
+            
+            if (!emailValidation(emailElem.value)) {
                 errorMsg("Invalid email address.");
                 return;
             }

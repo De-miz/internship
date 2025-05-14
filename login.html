@@ -84,10 +84,28 @@
             e.preventDefault() // stop default form submit behavior
 
             let emailElem = document.getElementById("email-field"), 
-            pwdElem = document.getElementById("pwd-field");
+            pwdElem = document.getElementById("pwd-field"), 
+            keepUserLoggedIn = document.getElementById("remember-me-chbox");
 
+
+            for (let i of [emailElem, pwdElem]) {
+                if (!i.value.length) {
+                    i.style.borderColor = "red";
+                    errorMsg("Field is required.");
+                    return;
+                } else {
+                    i.style.borderColor = "var(--primary-field-border-c)";
+                }
+            }
+
+            if (!localStorage.getItem("user_email")) {
+                errorMsg("Email address does not exist, please sign up.");
+                return;
+            }
             if (emailElem.value === localStorage.getItem("user_email")) {
                 if (pwdElem.value === localStorage.getItem("user_password")) {
+                    if (keepUserLoggedIn.checked) {localStorage.setItem("remember_me", true)} // for auto login
+                    localStorage.setItem("is_login", true);
                     hideErrorMsg(); // hide error message
                     alert("Login successfully!");
                     setTimeout(() => window.location.href = "/", 500); // redirect to home page after successful login
@@ -95,7 +113,7 @@
                     errorMsg("Wrong password, please try again."); // prompt error msg
                 }
             } else {
-                errorMsg("Invalid email address, please try again."); // prompt error msg
+                errorMsg("Wrong email address, please try again."); // prompt error msg
             }
         })
     </script>

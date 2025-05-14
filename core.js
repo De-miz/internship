@@ -9,3 +9,10 @@ const errorMsg = (msg) => {
 }
 
 const hideErrorMsg = () => errorMsgElem.classList.add("hide");
+
+const emailValidation = (email) => {
+    if (email.search(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/) < 0) {
+        return false;
+    }
+    return true;
+}

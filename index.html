@@ -9,7 +9,7 @@
     <title>Medium</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body onload="if (localStorage.getItem('is_login') != 'true') {window.location.href = '/login.html';} else {let signInOut = document.getElementById('sign-in-link'); signInOut.href = '#logout'; signInOut.innerHTML = 'Sign out';}">
     <nav class="main-nav">
         <span id="main-logo">Medium</span>
         <ul>
@@ -17,7 +17,7 @@
             <li class="secondary-links"><a href="#">Membership</a></li>
             <li class="secondary-links"><a href="#">Write</a></li>
             <li><a id="sign-in-link" href="/login.html">Sign in</a></li>
-            <li><a href="/login.html"><button class="primary-btn-small">Get started</button></a></li>
+            <li><a href="#"><button class="primary-btn-small">Get started</button></a></li>
         </ul>
     </nav>
     <hr />
@@ -56,5 +56,19 @@
         </ul>
     </footer>
 
+    <script>
+        let signInOut = document.getElementById("sign-in-link");
+
+        signInOut.addEventListener("click", (e) => {
+            e.preventDefault();
+            if (localStorage.getItem("user_email")) {
+                e.preventDefault();
+                localStorage.setItem("is_login", false);
+                window.location.href = "/";
+            }
+        })
+
+        console.log(typeof localStorage.getItem("remember_me"));
+    </script>
 </body>
 </html>
