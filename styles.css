@@ -61,10 +61,11 @@ main {
     overflow: hidden;
 }
 .main-header {
-    font-size: 6rem;
+    font-size: 7rem;
     font-weight: 400;
     margin: 0;
     font-family: 'Habibi', sans-serif;
+    font-weight: 900;
 }
 .short-desc {
     font-size: 1.2rem;
@@ -140,6 +141,9 @@ footer a {
         padding: 20px;
         background-color: green;
     }
+    .main-header {
+        font-size: 5rem;
+    }
 }
 @media screen and (max-width: 500px) {
     .left-flex-content {
@@ -152,15 +156,12 @@ footer a {
     .right-flex-content {
         display: none;
     }
+    .main-header {
+        font-size: 4rem;
+    }
 }
 @media screen and (max-width: 400px) {
     #sign-in-link {
         display: none;
-    }
-    .main-header {
-        font-size: 4rem;
-        font-weight: 400;
-        margin: 0;
-        font-family: 'Habibi', sans-serif;
     }
 }
