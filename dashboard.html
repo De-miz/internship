@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/d26cb7d64e.js" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Habibi&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="dashboard.css">
+    <title>My Dashboard</title>
+</head>
+<body>
+
+    <main>
+
+
+        <div id="task-popup-overlay" class="task-popup-overlay">
+            <i class="fa-solid fa-circle-xmark close-task-popup-btn cursor-point" id="close-task-popup"></i>
+
+            <!-- Task creation and editing -->
+            <div id="edit-task">
+                <h2 id="create-update-task-header">Create Task</h2>
+
+                <div class="field-box">
+                    <label for="title-field">Title <br />
+                        <input class="default-input" id="title-field" type="email" placeholder="Start development server"/><i class="fa-solid fa-newspaper field-icon"></i>
+                    </label>
+                </div>
+
+                <div class="field-box">
+                    <label for="task-desc">Description <br />
+                        <textarea class="default-input" id="task-desc" type="password" placeholder="Run CI/CD pipelines"></textarea><i class="fa-solid field-icon fa-note-sticky"></i>
+                    </label>
+                </div>
+
+                <div class="field-box">
+                    <label for="start-time-field">Start Time <br />
+                        <input class="default-input" id="start-time-field" type="datetime-local"/><i class="fa-solid  field-icon fa-clock"></i>
+                    </label>
+                </div>
+
+                <div class="field-box">
+                    <label for="end-time-field">Completion Time <br />
+                        <input class="default-input" id="end-time-field" type="datetime-local"/><i class="fa-solid  field-icon fa-clock"></i>
+                    </label>
+                </div>
+                <small id="task-creation-error-msg" style="color: var(--delete-red);"></small>
+
+                <div class="field-box">
+                    <button id="create-update-task" class="btn-highlt">Create Task</button>
+                </div>
+
+            </div>
+        </div>
+
+        <div id="mobile-view-side-menu-popup" class="task-popup-overlay">
+            <i class="fa-solid fa-circle-xmark close-task-popup-btn cursor-point" id="close-menu-popup"></i>
+
+            <div class="mobile-view-side-menu mv-side-menu" style="width: 230px;">
+                <div id="main-logo" style="margin-top: 50px; margin-bottom: 50px; font-size: 2.4rem;">Medium</div>
+                <ul>
+                    <li id="tasks-page-popup-menu-btn" onclick="pointToTasksPage(this);"><i class="fa-solid fa-list-check"></i>&nbsp;&nbsp;Tasks (<span id="total-tasks-count-mobile">0</span>)</li>
+                    <li id="calendar-page-popup-menu-btn" onclick="pointToCalendarPage(this);"><i class="fa-solid fa-calendar-days"></i>&nbsp;&nbsp;Calendar</li>
+                    <li onclick="signOut();"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="side-menu">
+            <div id="main-logo" style="margin-top: 80px;">Medium</div>
+            <ul>
+                <li id="tasks-page-side-menu-btn" onclick="pointToTasksPage(this);"><i class="fa-solid fa-list-check"></i>&nbsp;&nbsp;Tasks (<span id="total-tasks-count">0</span>)</li>
+                <li id="calendar-page-side-menu-btn" onclick="pointToCalendarPage(this);"><i class="fa-solid fa-calendar-days"></i>&nbsp;&nbsp;Calendar</li>
+                <li onclick="signOut();"><i class="fa-solid fa-right-from-bracket"></i>&nbsp;&nbsp;Logout</li>
+            </ul>
+        </div>
+
+        <div class="main-content">
+
+            <div class="top-bar">
+                <i id="mobile-view-menu-btn" class="fa-solid fa-bars cursor-point icon-hover"></i>
+                <div class="top-bar-right">
+                    <button id="create-task-btn" class="db-primary-btn btn-highlt"><i class="fa-solid fa-plus"></i> Create task</button>
+                    <i class="fa-solid fa-bell icon-hover cursor-point"></i>
+                    <i onclick="signOut();" class="fa-solid fa-power-off cursor-point icon-hover"></i>
+                    <img id="user-avartar" src="https://img.icons8.com/?size=100&id=20749&format=png&color=000000" alt="User Avatar" class="user-avatar">
+                </div>
+            </div>
+
+            <div class="dashboard-main-page-content">
+                <h1 class="greetings" style="margin-top: 80px;">Sup, Demiz</h1>
+
+                <div id="db-home-page">
+
+                    <div class="db-home-page-content">
+                        <div class="mini-tasks-nav-bar">
+                            <span id="in-progress-tasks" class="mini-tasks-nav-bar-item" onclick="selectListOfTasksByType('in-progress');">In Progress</span>
+                            <span id="completed-tasks" class="mini-tasks-nav-bar-item" onclick="selectListOfTasksByType('completed');">Completed</span>
+                            <span id="overdue-tasks" class="mini-tasks-nav-bar-item" onclick="selectListOfTasksByType('overdue');">Over-Due</span>
+                        </div>
+
+                        <h3>Total (<span id="total-tasks-count-by-type"></span>)</h3>
+
+                        <div id="list-of-tasks" class="list-of-tasks">
+                            <!-- Tasks come here, populated by JS -->
+                        </div>
+
+                    </div>
+
+                    <div class="db-home-page-right-side-content">
+                        <div class="calendar-box">
+                            <div class="calendar-container">
+                                <div class="calendar-header">
+                                    <button id="prev-month"><i class="fa-solid fa-chevron-left"></i></button>
+                                    <h2 id="month-year"></h2>
+                                    <button id="next-month"><i class="fa-solid fa-chevron-right"></i></button>
+                                </div>
+                                <div class="calendar-grid" id="calendar-grid">
+                                    <!-- Calendar days comes here, populated by JS -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+    <script src="dashboard_script.js"></script>
+    <script src="calendar.js"></script>
+
+</body>
+</html>

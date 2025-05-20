@@ -108,7 +108,7 @@
                     localStorage.setItem("is_login", true);
                     hideErrorMsg(); // hide error message
                     alert("Login successfully!");
-                    setTimeout(() => window.location.href = "/", 500); // redirect to home page after successful login
+                    setTimeout(() => window.location.href = "/dashboard.html", 500); // redirect to home page after successful login
                 } else {
                     errorMsg("Wrong password, please try again."); // prompt error msg
                 }

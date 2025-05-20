@@ -1,0 +1,377 @@
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+:root {
+    --primary-black: #030303;
+    --side-menu-gray: #f4f4f4a1;
+    --secondary-gray: rgb(219, 219, 219);
+    --primary-transition: 0.2s all linear;
+    --delete-red: rgb(235, 0, 0);
+    --edit-blue: rgb(0, 81, 255);
+    --freestyle-transition-config: 0.8s all cubic-bezier(0.18, 0.89, 0.32, 1.28);
+    --transition-emphasize: 0.8s all linear(0 0%, 0 1.8%, 0.01 3.6%, 0.03 6.35%, 0.07 9.1%, 0.13 11.4%, 0.19 13.4%, 0.27 15%, 0.34 16.1%, 0.54 18.35%, 0.66 20.6%, 0.72 22.4%, 0.77 24.6%, 0.81 27.3%, 0.85 30.4%, 0.88 35.1%, 0.92 40.6%, 0.94 47.2%, 0.96 55%, 0.98 64%, 0.99 74.4%, 1 86.4%, 1 100%);
+    --check-task-green: green;
+}
+
+#main-logo {
+    font-weight: 900;
+    font-size: 2rem;
+    display: block;
+    font-family: "DM Serif Display", serif;
+}
+.side-menu, 
+.mv-side-menu {
+    width: 180px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    position: fixed;
+    height: 100%;
+    z-index: 200;
+}
+.side-menu ul, 
+.mv-side-menu ul {
+    list-style-type: none;
+    padding: 0;
+}
+.side-menu ul li, 
+.mv-side-menu ul li {
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: var(--primary-transition);
+    margin-bottom: 5px;
+}
+.side-menu ul li:hover, 
+.mv-side-menu ul li:hover {
+    background-color: #030303;
+    color: white;
+}
+#mobile-view-menu-btn {
+    visibility: hidden;
+    font-size: 1.2rem; 
+    padding-left: 8px;
+}
+.main-content {
+    margin-left: 220px;
+}
+.top-bar {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--side-menu-gray);
+    padding: 5px;    position: fixed;
+    width: 100%;
+    left: 0;
+    top: 0;
+    backdrop-filter: blur(10px);
+    z-index: 190;
+}
+.top-bar-left {
+    font-size: 20px;
+    font-weight: bold;
+}
+.top-bar-right {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    justify-content: space-between;
+}
+#user-avartar {
+    height: 40px;
+}
+.db-primary-btn {
+    background-color: rgb(219, 219, 219);
+    color: var(--primary-black);
+    font-size: 0.8rem;
+    padding: 8px;
+    border: none;
+    border-radius: 30px;
+}
+.btn-highlt {
+    transition: var(--primary-transition);
+    cursor: pointer;
+}
+.btn-highlt:hover {
+    opacity: 0.8;
+}
+.dashboard-main-page-content {
+    padding: 10px;
+}
+#db-home-page {
+    display: flex;
+}
+.db-home-page-content {
+    flex-basis: 60%;
+    height: 200px;
+}
+.db-home-page-right-side-content {
+    flex-basis: 40%;
+    height: 100px;
+}
+.mini-tasks-nav-bar {
+    background-color: var(--secondary-gray);
+    display: flex;
+    justify-content: space-around;
+    height: 50px;
+    align-items: center;
+    border-radius: 30px;
+    overflow: hidden;
+}
+.mini-tasks-nav-bar-item {
+    display: flex;
+    align-items: center;
+    width: 33.5%;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+    cursor: pointer;
+    transition: var(--primary-transition);
+}
+.mini-tasks-nav-bar-item:hover, 
+.selected-task-type {
+    background-color: var(--primary-black);
+    color: white;
+}
+
+/* Task list */
+.list-of-tasks {
+    margin-top: 50px;
+    padding-bottom: 30px;
+}
+.task-box {
+    margin: 0 auto;
+    height: fit-content;
+    padding: 20px;
+    border: none;
+    border-radius: 40px;
+    max-width: 400px;
+    background-color: var(--secondary-gray);
+    box-shadow: 0 0 15px 1px rgba(219, 219, 219, 0.425);
+    margin-bottom: 20px;
+}
+.task-box-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.task-title {
+    line-height: none;
+    margin: 0;
+}
+.cursor-point {
+    cursor: pointer;
+}
+.task-box-bottom-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: rgb(78, 78, 78);
+}
+.task-box-bottom-bar-right {    
+    width: 100px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.2rem;
+}
+.del-icon-btn {
+    color: var(--delete-red);
+}
+.edit-icon-btn {
+    color: var(--edit-blue);
+}
+.check-task-icon-btn {
+    color: var(--check-task-green);
+}
+.icon-hover {
+    padding: 5px;
+    border: none;
+    border-radius: 30px;
+    transition: 0.2s all linear;
+}
+.icon-hover:hover {
+    background-color: rgb(189, 189, 189);
+}
+
+/* Popup overlay box */
+.task-popup-overlay {
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.493);
+    width: 100%;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 500 !important;
+    scale: 0;
+    opacity: 0;
+    border-radius: 50%; 
+    padding: 0 10px;
+    transition: var(--freestyle-transition-config);
+}
+#mobile-view-side-menu-popup {
+    scale: 1;
+    opacity: 0;
+    border-radius: 0;
+    transition: var(--transition-emphasize);
+    transform: translateX(-100%);
+}
+#edit-task {
+    flex-basis: 420px;
+    border-radius: 50px;
+    background-color: var(--side-menu-gray);
+    padding: 30px 20px;
+}
+#edit-task h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin: 0;
+}
+.field-box {
+    padding: 14px 0;
+}
+.field-box button {
+    background-color: var(--primary-black);
+    border: none;
+    color: white;
+    padding: 15px 0;
+    width: 100%;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    font-weight: 900;
+    font-size: 1rem;
+    cursor: pointer;
+}
+.default-input {
+    padding: 15px 12px;
+    border: 1px solid var(--primary-field-border-c);
+    border-radius: 10px;
+    width: calc(100% - 45px);
+    padding-left: 33px;
+    outline: none;
+    font-size: 1rem;
+    background-color: rgba(131, 131, 131, 0.267);
+    font-family: inherit;
+}
+label {
+    position: relative;
+    color: var(--primary-label-color);
+    font-weight: 600;
+}
+.field-icon {
+    position: absolute;
+    top: 40px;
+    left: 10px;
+    color: var(--primary-field-border-c);
+}
+.close-task-popup-btn {
+    position: absolute;
+    top: 10px;
+    right: 35px;
+    color: white;
+    font-size: 40px;
+}
+
+@media screen and (max-width: 1100px) {
+    .db-home-page-right-side-content {
+        display: none;
+    }
+
+    .db-home-page-content {
+        flex-basis: 100%;
+    }
+}
+@media screen and (max-width: 700px) {
+    .side-menu {
+        display: none;
+    }
+    .main-content {
+        margin-left: 0;
+    }
+    #mobile-view-menu-btn {
+        visibility: visible;
+    }
+}
+
+/* Mobile view side menu */
+.mobile-view-side-menu {
+    position: inherit;
+    left: 0;
+    height: 100%;
+    width: 300px;
+}
+
+/* Calendar styles */
+.calendar-box {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 130px;
+}
+.calendar-container {
+    background-color: moccasin;
+    border-radius: 50px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.calendar-header h2 {
+    margin: 0;
+    font-size: 18px;
+    color: #333;
+}
+.calendar-header button {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: var(--primary-black);
+}
+.calendar-header button:hover {
+    color: #0056b3;
+}
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+.calendar-day {
+    text-align: center;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+}
+.calendar-day.header {
+    font-weight: bold;
+    color: #666;
+}
+.calendar-day.empty {
+    background-color: transparent;
+}
+.calendar-day.date {
+    cursor: pointer;
+    border-radius: 30px;
+    transition: background-color 0.2s;
+}
+.calendar-day.date:hover {
+    background-color: var(--secondary-gray);
+}
+.calendar-day.current {
+    background-color: var(--primary-black);
+    color: white;
+}
+.calendar-day.selected {
+    background-color: #28a745;
+    color: white;
+}
